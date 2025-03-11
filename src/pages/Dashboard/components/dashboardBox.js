@@ -1,12 +1,12 @@
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import { IoMdMore } from "react-icons/io";
 import Button from '@mui/material/Button';
 
 const DashboardBox = (props) => {
 
-    useEffect(() => {
-        console.log(props.color);
-    }, []);
+    // useEffect(() => {
+    //     console.log(props.color);
+    // }, []);
     
     return (
         <Button className="dashboardBox" style={{

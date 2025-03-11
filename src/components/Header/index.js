@@ -12,6 +12,10 @@ import * as React from 'react';
 import { IoShieldHalf } from "react-icons/io5";
 import { FaUser } from "react-icons/fa";
 import { MyContext } from '../../App';
+import { useNavigate } from "react-router-dom"; 
+import { setAuthToken } from "../../helpers/setAuthToken";
+import { FaRegBell } from "react-icons/fa";
+import { LuMessageCircle } from "react-icons/lu";
 
 const Header = () => {
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -25,6 +29,14 @@ const Header = () => {
     const handleClose = () => {
         setAnchorEl(null);
       };
+
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+          localStorage.removeItem("token");
+          setAuthToken(null);
+          navigate("/login"); // Điều hướng về trang login
+    };
     return (
         <>
             <header className='d-flex align-items-center'>
@@ -52,9 +64,9 @@ const Header = () => {
 
                         <div className='col-sm-7 d-flex align-items-center justify-content-end part3'>
                             {/* <Button className='rounded-circle mr-3'><MdMenuOpen/></Button> */}
-                            <Button className='rounded-circle mr-3'><MdMenuOpen/></Button>
-                            <Button className='rounded-circle mr-3'><MdMenuOpen/></Button>
-                            <Button className='rounded-circle mr-3'><MdMenuOpen/></Button>
+                            <Button className='rounded-circle mr-3'><FaRegBell/></Button>
+                            <Button className='rounded-circle mr-3'><LuMessageCircle/></Button>
+                            {/* <Button className='rounded-circle mr-3'><MdMenuOpen/></Button> */}
 
                             <div className="myAccWrapper">
                                 <Button className='myAcc d-flex align-items-center' onClick={handleClick}>
@@ -90,11 +102,11 @@ const Header = () => {
                                     </ListItemIcon>
                                     Reset password
                                     </MenuItem>
-                                    <MenuItem onClick={handleClose}>
+                                    <MenuItem onClick={handleLogout}>
                                     <ListItemIcon>
                                         <Logout fontSize="small" />
                                     </ListItemIcon>
-                                    Logout
+                                     Logout
                                     </MenuItem>
                                 </Menu>  
                             </div>

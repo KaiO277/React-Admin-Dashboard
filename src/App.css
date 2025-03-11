@@ -78,6 +78,7 @@ header button.rounded-circle:hover svg{color: #0858f7 !important;}
     font-size: 12px;
     color: #000;
     opacity: 0.7;
+    text-transform: none;
 }
 
 #account-menu li{
